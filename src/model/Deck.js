@@ -26,6 +26,24 @@ class Deck {
         }
         return array
     }
+
+    drawQuestion = () => {
+        return this.questions.pop()
+    }
+
+    drawAnswer = () => {
+        return this.answers.pop()
+    }
+
+    discardQuestion = (question) => {
+        this.discardedQuestions.push(question)
+        return question
+    }
+
+    discardAnswer = (answer) => {
+        this.discardedAnswers.push(answer)
+        return answer
+    }
 }
 
 module.exports = Deck
