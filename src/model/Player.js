@@ -8,3 +8,5 @@ class Player {
         this.game = game
     }
 }
+
+module.exports = Player

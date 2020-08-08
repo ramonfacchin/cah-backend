@@ -11,3 +11,5 @@ class Game {
         this.pointsToWin = 7
     }
 }
+
+module.exports = Game

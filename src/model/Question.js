@@ -1,6 +1,13 @@
 class Question {
-    constructor(sentence,expectedAnswers) {
+    constructor(id, sentence, expectedAnswers) {
+        this.id = id
         this.sentence = sentence
-        this.expectedAnswers = expectedAnswers
+        this.expectedAnswers = expectedAnswers && expectedAnswers > 0 ? expectedAnswers : 1
+    }
+
+    ask = () => {
+        return this.sentence;
     }
 }
+
+module.exports = Question
