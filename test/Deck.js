@@ -88,4 +88,26 @@ describe('Deck', () => {
         assert.equal(1, deck.discardedAnswers.length)
         assert.equal(answer, deck.discardedAnswers[0])
     })
+    it('should shuffle discarded questions into questions pile when drawing with no questions left', () => {
+        let deck = new Deck(1, 'Brazil')
+        questions.forEach(question => {
+            deck.discardQuestion(question)
+        })
+        assert.equal(0, deck.questions.length)
+        assert.equal(6, deck.discardedQuestions.length)
+        let question = deck.drawQuestion()
+        assert.equal(5, deck.questions.length)
+        assert.equal(0, deck.discardedQuestions.length)
+    })
+    it('should shuffle discarded answers into answer pile when drawing with no answers left', () => {
+        let deck = new Deck(1, 'Brazil')
+        answers.forEach(answer => {
+            deck.discardAnswer(answer)
+        })
+        assert.equal(0, deck.answers.length)
+        assert.equal(6, deck.discardedAnswers.length)
+        let answer = deck.drawAnswer()
+        assert.equal(5, deck.answers.length)
+        assert.equal(0, deck.discardedAnswers.length)
+    })
 })
