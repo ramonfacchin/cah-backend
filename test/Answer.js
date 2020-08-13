@@ -1,5 +1,5 @@
-var assert = require('assert')
-var Answer = require('../src/model/Answer')
+const assert = require('assert')
+const Answer = require('../src/model/Answer')
 
 describe('Answer', () => {
     it('should have id', () => {

@@ -1,7 +1,7 @@
-var assert = require('assert')
-var Deck = require('../src/model/Deck')
-var Question = require('../src/model/Question')
-var Answer = require('../src/model/Answer')
+const assert = require('assert')
+const Deck = require('../src/model/Deck')
+const Question = require('../src/model/Question')
+const Answer = require('../src/model/Answer')
 
 const questions = [
     { id : 1, sentence : 'Question1?'},
