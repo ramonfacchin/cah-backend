@@ -1,3 +1,4 @@
+const shuffle = require('../util/Shuffler')
 const STATUS = require('./enumerations/GameStatus')
 
 class Game {
@@ -10,9 +11,13 @@ class Game {
         this.round = 0
         this.pointsToWin = 7
         this.status = STATUS.GAME_SETUP
+        this.roundState = {}
     }
 
     joinPlayer = (player) => {
+        if (this.status !== STATUS.GAME_SETUP) {
+            throw new Error('Game already started.')
+        }
         if (this.players.length < 8) {
             if (this.players.filter(pl => pl.id === player.id).length > 0) {
                 throw new Error('A player cannot join the game twice.')
@@ -25,9 +30,10 @@ class Game {
     
     start = () => {
         if (this.players.length > 3) {
-            if (this.status && this.status !== STATUS.GAME_OVER) {
+            if (this.status && this.status !== STATUS.GAME_OVER && this.status !== STATUS.GAME_SETUP) {
                 throw new Error('Game already started.')
             }
+            this.players = shuffle(this.players)
             this.startRound()
         } else {
             throw new Error('Cannot start a game with less than 4 players.')
@@ -36,6 +42,7 @@ class Game {
 
     startRound = () => {
         this.status = STATUS.ROUND_START
+        this.czar = this.players[(this.round % this.players.length)]
         this.round += 1
     }
 }

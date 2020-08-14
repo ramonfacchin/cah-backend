@@ -1,3 +1,5 @@
+const shuffle = require('../util/Shuffler')
+
 class Deck {
     constructor(id, name, questions, answers, description) {
         this.questions = questions ? questions : []
@@ -10,21 +12,13 @@ class Deck {
     }
 
     shuffleQuestions = () => {
-        this.shuffleArray(this.questions)
+        shuffle(this.questions)
         return this.questions
     }
 
     shuffleAnswers = () => {
-        this.shuffleArray(this.answers)
+        shuffle(this.answers)
         return this.answers
-    }
-
-    shuffleArray = (array) => {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1)); //WTF, JS?!
-            [array[i], array[j]] = [array[j], array[i]]
-        }
-        return array
     }
 
     drawQuestion = () => {
