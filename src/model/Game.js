@@ -33,7 +33,17 @@ class Game {
             if (this.status && this.status !== STATUS.GAME_OVER && this.status !== STATUS.GAME_SETUP) {
                 throw new Error('Game already started.')
             }
-            this.players = shuffle(this.players)
+            const playerOrder = this.players.map(player => player.id).join('')
+            while (playerOrder == this.players.map(player => player.id).join('')) {
+                // makes sure that players will never play in the same order that they joined the game
+                this.players = shuffle(this.players)
+            }
+            
+            this.players.forEach(player => {
+                Array(10).fill().forEach( key => {
+                    player.drawAnswer()
+                })
+            })
             this.startRound()
         } else {
             throw new Error('Cannot start a game with less than 4 players.')

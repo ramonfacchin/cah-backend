@@ -21,7 +21,7 @@ class Deck {
         return this.answers
     }
 
-    drawQuestion = () => {
+    popQuestion = () => {
         let question = this.questions.pop()
         if (!question) {
             this.questions = this.discardedQuestions
@@ -32,7 +32,7 @@ class Deck {
         return question
     }
 
-    drawAnswer = () => {
+    popAnswer = () => {
         let answer = this.answers.pop()
         if (!answer) {
             this.answers = this.discardedAnswers

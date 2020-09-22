@@ -8,6 +8,11 @@ class Player {
         this.game = game
         this.host = host ? true : false
     }
+
+    drawAnswer = () => {
+        let answer = this.game.deck.popAnswer()
+        answer ? this.answers.push(answer) : {}
+    }
 }
 
 module.exports = Player

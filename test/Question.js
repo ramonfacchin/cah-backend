@@ -6,13 +6,13 @@ describe('Question', () => {
         let question = new Question(1, 'Who came first, egg or chicken?')
         assert.ok(question)
         assert.ok(question.id)
-        assert.equal(1, question.id)
+        assert.strictEqual(1, question.id)
     })
     it('should have sentence', () => {
         let question = new Question(1, 'Who came first, egg or chicken?')
         assert.ok(question)
         assert.ok(question.sentence)
-        assert.equal('Who came first, egg or chicken?', question.sentence)
+        assert.strictEqual('Who came first, egg or chicken?', question.sentence)
     })
     it('should ask question', () => {
         let question = new Question(1, 'Who came first, egg or chicken?')
